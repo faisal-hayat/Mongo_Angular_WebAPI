@@ -17,7 +17,7 @@ namespace MongDbWebAPI.Controllers
             _driverService= driverService;
         }
         [HttpGet]
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> GetDrivers()
         {
             return Ok(await _driverService.GetAsync());
         }
