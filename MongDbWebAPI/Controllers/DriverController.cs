@@ -4,7 +4,7 @@ using MongDbWebAPI.Services;
 namespace MongDbWebAPI.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class DriverController : ControllerBase
     {
         public ILogger<DriverController> _logger;
