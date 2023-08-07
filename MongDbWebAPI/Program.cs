@@ -1,5 +1,6 @@
 using Microsoft.Extensions.DependencyInjection;
 using MongDbWebAPI.Configration;
+using MongDbWebAPI.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +13,8 @@ builder.Services.AddSwaggerGen();
 // This is where we will be adding the mongoDb here
 builder.Services.Configure<DatabaseSettings>(builder.Configuration.GetSection("MongoDatabase"));
 
+// This is where we will be adding the services
+builder.Services.AddSingleton<DriverService>();
 
 var app = builder.Build();
 
