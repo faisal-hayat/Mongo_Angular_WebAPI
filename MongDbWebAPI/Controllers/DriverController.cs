@@ -3,6 +3,8 @@ using MongDbWebAPI.Services;
 
 namespace MongDbWebAPI.Controllers
 {
+    [ApiController]
+    [Route("[controller]")]
     public class DriverController : ControllerBase
     {
         public ILogger<DriverController> _logger;
@@ -15,7 +17,6 @@ namespace MongDbWebAPI.Controllers
             _driverService= driverService;
         }
         [HttpGet]
-        [Route("Driver")]
         public async Task<IActionResult> Index()
         {
             return Ok(await _driverService.GetAsync());
