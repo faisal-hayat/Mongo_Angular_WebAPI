@@ -1,3 +1,6 @@
+using Microsoft.Extensions.DependencyInjection;
+using MongDbWebAPI.Configration;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -7,6 +10,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 // This is where we will be adding the mongoDb here
+builder.Services.Configure<DatabaseSettings>(builder.Configuration.GetSection("MongoDatabase"));
 
 
 var app = builder.Build();
