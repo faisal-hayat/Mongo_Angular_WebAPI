@@ -12,7 +12,6 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 // This is where we will be adding the mongoDb here
 builder.Services.Configure<DatabaseSettings>(builder.Configuration.GetSection("MongoDatabase"));
-
 // This is where we will be adding the services
 builder.Services.AddSingleton<DriverService>();
 
