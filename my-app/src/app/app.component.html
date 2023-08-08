@@ -15,7 +15,32 @@
   <div class="content" role="main">
     <h2>Driver</h2>
   </div>
+  <!-- This is where i need to implement the table -->
+  <div class="container">
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Driver Number</th>
+          <th>Team</th>
+        </tr>
+      </thead>
 
+      <tbody>
+        <tr *ngFor='let driver of drivers'> 
+          <td>
+            {{ driver.name }}
+          </td>
+          <td>
+            {{ driver.number }}
+          </td>
+          <td>
+            {{ driver.team }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
   </body>
 </html>
 
