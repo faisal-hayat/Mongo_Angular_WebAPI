@@ -9,7 +9,7 @@ import { environment } from 'src/environments/environment'; // provides the apiU
 })
 
 export class DriverService {
-  url = "/Driver";
+  url = "Driver";
 
   constructor(private http: HttpClient) { 
   }

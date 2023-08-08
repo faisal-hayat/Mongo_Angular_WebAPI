@@ -1,3 +1,4 @@
+using Amazon.Auth.AccessControlPolicy;
 using Microsoft.Extensions.DependencyInjection;
 using MongDbWebAPI.Configration;
 using MongDbWebAPI.Services;
@@ -5,7 +6,6 @@ using MongDbWebAPI.Services;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -14,6 +14,11 @@ builder.Services.AddSwaggerGen();
 builder.Services.Configure<DatabaseSettings>(builder.Configuration.GetSection("MongoDatabase"));
 // This is where we will be adding the services
 builder.Services.AddSingleton<DriverService>();
+// Add CORS Rules
+builder.Services.AddCors(options => options.AddPolicy("AngularClient", policy =>
+{
+    policy.WithOrigins("http://localhost:4200/").AllowAnyMethod().AllowAnyOrigin();
+}));
 
 var app = builder.Build();
 
@@ -25,9 +30,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
 app.UseAuthorization();
-
 app.MapControllers();
-
+app.UseCors("AngularClient");
 app.Run();
